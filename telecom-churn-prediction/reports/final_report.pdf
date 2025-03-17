@@ -1,0 +1,24 @@
+# Telecom Customer Churn Prediction - Final Report
+
+## Executive Summary
+This project developed a machine learning model to predict customer churn for a telecom company. The model achieves 83% accuracy and provides a potential ROI of 1,961% when implemented with retention strategies. The analysis identified key factors that influence customer churn, with month-to-month contracts being the most significant predictor.
+
+## Business Problem
+Customer churn represents a significant challenge for telecom companies. Acquiring new customers is much more expensive than retaining existing ones, making effective churn prediction and prevention critical for business success.
+
+## Data Overview
+The dataset consisted of 7,043 customer records with 38 features including:
+- Demographics (age, gender, marital status)
+- Service details (contract type, offerings, internet type)
+- Financial information (monthly charges, total charges)
+- Engagement metrics (referrals, tenure)
+
+## Methodology
+1. **Data Preprocessing**: Cleaned data, handled missing values, corrected negative monetary values
+2. **Feature Engineering**: Created derived features like tenure in years, premium service count, and spend ratio
+3. **Model Development**: 
+   - Handled class imbalance using SMOTE
+   - Trained multiple classification models
+   - Selected Gradient Boosting as the best performer
+   - Optimized hyperparameters via randomized search
+4. **Threshold Optimization**: Found the
