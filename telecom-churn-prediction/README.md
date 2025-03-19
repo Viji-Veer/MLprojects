@@ -33,7 +33,7 @@ This project uses machine learning to predict customer churn for a telecom compa
 ### Installation
 ```bash
 # Clone this repository
-git clone https://github.com/yourusername/telecom-churn-prediction.git
+git clone https://github.com/Viji/Veer/telecom-churn-prediction.git
 
 # Go into the repository
 cd telecom-churn-prediction
