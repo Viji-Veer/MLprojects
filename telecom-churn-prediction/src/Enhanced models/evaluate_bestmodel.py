@@ -1,3 +1,55 @@
+def optimize_threshold(model, X_test, y_test):
+    """
+    Find optimal threshold for classification based on ROC curve
+    """
+    print("\nOptimizing classification threshold...")
+    # Get probabilities for the positive class
+    y_prob = model.predict_proba(X_test)[:, 1]
+    
+    # Calculate ROC curve
+    fpr, tpr, thresholds = roc_curve(y_test, y_prob)
+    
+    # Find the threshold that maximizes TPR - FPR (Youden's J statistic)
+    optimal_idx = np.argmax(tpr - fpr)
+    optimal_threshold = thresholds[optimal_idx]
+    
+    print(f"Optimal threshold: {optimal_threshold:.4f}")
+    
+    # Plot ROC curve
+    plt.figure(figsize=(10, 8))
+    plt.plot(fpr, tpr, label=f'ROC curve (AUC = {roc_auc_score(y_test, y_prob):.4f})')
+    plt.scatter(fpr[optimal_idx], tpr[optimal_idx], marker='o', color='red', 
+               label=f'Optimal threshold: {optimal_threshold:.4f}')
+    plt.plot([0, 1], [0, 1], 'k--')
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title('ROC Curve with Optimal Threshold')
+    plt.legend()
+    plt.savefig('roc_curve.png')
+    plt.close()
+    
+    # Make predictions with the optimal threshold
+    y_pred_optimal = (y_prob >= optimal_threshold).astype(int)
+    
+    # Print classification report with optimal threshold
+    print("\nClassification report with optimal threshold:")
+    print(classification_report(y_test, y_pred_optimal))
+    
+    # Confusion matrix
+    plt.figure(figsize=(8, 6))
+    cm = confusion_matrix(y_test, y_pred_optimal)
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
+               xticklabels=['Not Churned', 'Churned'],
+               yticklabels=['Not Churned', 'Churned'])
+    plt.xlabel('Predicted')
+    plt.ylabel('Actual')
+    plt.title('Confusion Matrix with Optimal Threshold')
+    plt.savefig('confusion_matrix.png')
+    plt.close()
+    
+    return optimal_threshold, y_pred_optimal
+
+
 def evaluate_model_for_business(model, X_test, y_test, optimal_threshold=None):
     """
     Evaluate model with business-specific metrics
