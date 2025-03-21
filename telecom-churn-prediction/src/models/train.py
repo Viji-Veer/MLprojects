@@ -1,74 +1,63 @@
-from sklearn.ensemble import GradientBoostingClassifier
-from imblearn.over_sampling import SMOTE
-from sklearn.model_selection import RandomizedSearchCV
-import joblib
-
-def handle_class_imbalance(X_train, y_train):
+def prepare_modeling_data(df):
     """
-    Handle class imbalance using SMOTE
+    Prepare the data for modeling by encoding categorical variables
+    and scaling numerical variables
     """
-    print("\nHandling class imbalance with SMOTE...")
-    smote = SMOTE(random_state=42)
-    X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
+    print("\nPreparing data for modeling...")
     
-    # Print class distribution before and after resampling
-    print("Class distribution before resampling:")
-    print(pd.Series(y_train).value_counts(normalize=True))
+    df_prep = df.copy()
     
-    print("\nClass distribution after resampling:")
-    print(pd.Series(y_train_resampled).value_counts(normalize=True))
+    # Define the target variable (what we're trying to predict)
+    y = df_prep['Churned_Binary']
     
-    return X_train_resampled, y_train_resampled
-
-def hyperparameter_tuning(X_train, y_train):
-    """
-    Perform hyperparameter tuning for Gradient Boosting
-    """
-    print("\nPerforming hyperparameter tuning for Gradient Boosting...")
+    # Remove columns not needed for modeling
+    columns_to_drop = ['Customer ID', 'Churned_Binary', 'Customer Status', 'Churn Category', 'Churn Reason',
+                      'Zip Code', 'Latitude', 'Longitude', 'City']
     
-    # Define parameter grid
-    param_grid = {
-        'n_estimators': [100, 200, 300],
-        'learning_rate': [0.01, 0.05, 0.1],
-        'max_depth': [3, 4, 5],
-        'min_samples_split': [2, 5, 10],
-        'min_samples_leaf': [1, 2, 4],
-        'subsample': [0.8, 0.9, 1.0]
-    }
+    X = df_prep.drop(columns=columns_to_drop)
     
-    # Use RandomizedSearchCV for more efficient tuning
-    gb_clf = GradientBoostingClassifier(random_state=42)
-    random_search = RandomizedSearchCV(
-        gb_clf, param_distributions=param_grid, 
-        n_iter=20, cv=5, scoring='roc_auc',
-        random_state=42, n_jobs=-1
-    )
+    # Identify categorical and numerical columns
+    categorical_cols = X.select_dtypes(include=['object', 'category']).columns.tolist()
+    numerical_cols = X.select_dtypes(include=['int64', 'float64']).columns.tolist()
     
-    # Fit the model
-    random_search.fit(X_train, y_train)
+    print(f"\nCategorical columns: {len(categorical_cols)}")
+    print(f"Numerical columns: {len(numerical_cols)}")
     
-    # Print best parameters and score
-    print(f"Best parameters: {random_search.best_params_}")
-    print(f"Best ROC AUC score: {random_search.best_score_:.4f}")
+    # Create preprocessing pipelines for both categorical and numerical data
+    numerical_transformer = Pipeline(steps=[
+        ('imputer', SimpleImputer(strategy='median')),
+        ('scaler', StandardScaler())
+    ])
     
-    return random_search.best_estimator_
-
-def train_final_model(X_train, y_train, model_save_path='models/best_churn_model.pkl'):
-    """
-    Train the final model and save to disk
-    """
-    # Handle class imbalance
-    X_train_resampled, y_train_resampled = handle_class_imbalance(X_train, y_train)
+    categorical_transformer = Pipeline(steps=[
+        ('imputer', SimpleImputer(strategy='most_frequent')),
+        ('onehot', OneHotEncoder(handle_unknown='ignore', sparse_output=False))
+    ])
     
-    # Hyperparameter tuning
-    best_model = hyperparameter_tuning(X_train_resampled, y_train_resampled)
+    # Combine the preprocessing steps
+    preprocessor = ColumnTransformer(
+        transformers=[
+            ('num', numerical_transformer, numerical_cols),
+            ('cat', categorical_transformer, categorical_cols)
+        ])
     
-    # Train final model
-    print("\nTraining final model with best parameters...")
-    best_model.fit(X_train_resampled, y_train_resampled)
+    # Split the data
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     
-    # Save model
-    joblib.dump(best_model, model_save_path)
-    print(f"Model saved to {model_save_path}")
+    # Preprocess the data
+    X_train_processed = preprocessor.fit_transform(X_train)
+    X_test_processed = preprocessor.transform(X_test)
     
-    return best_model
+    # Get the feature names after one-hot encoding
+    cat_feature_names = []
+    
+    if categorical_cols:
+        cat_encoder = preprocessor.named_transformers_['cat'].named_steps['onehot']
+        cat_feature_names = cat_encoder.get_feature_names_out(categorical_cols).tolist()
+    
+    all_feature_names = numerical_cols + cat_feature_names
+    
+    print(f"\nFinal processed dataset shape: {X_train_processed.shape}")
+    
+    return (X_train_processed, X_test_processed, y_train, y_test, 
+            preprocessor, all_feature_names)
