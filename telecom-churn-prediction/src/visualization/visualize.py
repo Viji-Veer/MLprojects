@@ -23,3 +23,30 @@ def plot_feature_importance(model, feature_names, top_n=15):
     plt.close()
     
     return feature_imp
+    
+def plot_confusion_matrix(y_true, y_pred, output_file=None):
+    """
+    Plot confusion matrix
+    
+    Parameters
+    ----------
+    y_true : array-like
+        True labels
+    y_pred : array-like
+        Predicted labels
+    output_file : str, optional
+        Path to save the confusion matrix plot
+    """
+    plt.figure(figsize=(8, 6))
+    cm = confusion_matrix(y_true, y_pred)
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
+               xticklabels=['Not Churned', 'Churned'],
+               yticklabels=['Not Churned', 'Churned'])
+    plt.xlabel('Predicted')
+    plt.ylabel('Actual')
+    plt.title('Confusion Matrix')
+    
+    if output_file:
+        plt.savefig(output_file)
+        print(f"Confusion matrix saved to {output_file}")
+    plt.close()
