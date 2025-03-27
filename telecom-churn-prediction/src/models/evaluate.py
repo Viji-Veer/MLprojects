@@ -51,3 +51,16 @@ def fit_model_example(X_train, y_train, X_test, y_test):
         }
     
     return results
+if __name__ == "__main__":
+    # Replace with your actual file path
+    file_path = "/content/telecom_customer_churn.csv"
+
+    # Run the preprocessing pipeline
+    X_train, X_test, y_train, y_test, preprocessor, feature_names = run_preprocessing_pipeline(file_path)
+
+    # Fit example models
+    results = fit_model_example(X_train, y_train, X_test, y_test)
+
+    # Print the best model based on accuracy
+    best_model = max(results.items(), key=lambda x: x[1]['accuracy'])
+    print(f"\nBest model by accuracy: {best_model[0]} with accuracy {best_model[1]['accuracy']:.4f}")
