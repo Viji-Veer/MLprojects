@@ -1,4 +1,4 @@
-# Telecom Customer Churn Prediction
+# User Retention And Churn Analysis
 
 An end-to-end machine learning pipeline that predicts
 customer churn with 82.61% accuracy and translates
