@@ -93,8 +93,7 @@ telecom-churn-prediction/
 │   ├── 1_data_exploration.ipynb
 │   ├── 2_preprocessing.ipynb
 │   └── 3_modeling.ipynb
-├── data/
-│   └── raw/
+├── data/raw
 │       └── telecom_customer_churn.csv
 ├── images/
 │   ├── confusion_matrix.png
