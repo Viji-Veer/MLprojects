@@ -1,7 +1,7 @@
 # Machine Learning Portfolio
 ### Vijayalakshmi Veeraiyan (Viji)
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/vijayalakshmi-veeraiyan)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](www.linkedin.com/in/vijayalakshmi-veeraiyan-6761421a1)
 [![GitHub](https://img.shields.io/badge/GitHub-Profile-black)](https://github.com/Viji-Veer)
 [![Location](https://img.shields.io/badge/Location-Vantaa%2C%20Finland-green)](https://github.com/Viji-Veer)
 
