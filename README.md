@@ -1,5 +1,5 @@
 # Machine Learning Portfolio
-### Vijayalakshmi Veeraiyan (Viji)
+### Vijayalakshmi Veeraiyan 
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://linkedin.com/in/vijayalakshmi-veeraiyan-6761421a1)
 [![GitHub](https://img.shields.io/badge/GitHub-Profile-black)](https://github.com/Viji-Veer)
@@ -10,7 +10,7 @@
 ## About This Repository
 
 This repository contains my machine learning 
-projects — each one built from scratch, 
+projects - each one built from scratch, 
 fully documented, and validated before 
 being presented publicly.
 
@@ -38,17 +38,17 @@ to people who need to act on them.
 
 **Business Problem:**
 A telecom company wants to identify customers 
-at risk of leaving before they actually do — 
+at risk of leaving before they actually do by 
 enabling targeted retention strategies that 
 protect revenue.
 
 **Dataset:** 7,043 customers, 38 features 
-(IBM Telecom Customer Churn — Kaggle)
+(IBM Telecom Customer Churn from Kaggle)
 
 **Approach:**
 - Exploratory data analysis revealing key 
   churn drivers
-- Feature engineering — 6 new variables 
+- Feature engineering - 6 new variables 
   including Monthly Spend Ratio
 - SMOTE for class imbalance handling
 - Gradient Boosting selected from 3 algorithms
@@ -137,7 +137,7 @@ Pandas, Matplotlib, Seaborn
 **Business Problem:**
 Understanding what drives player 
 engagement, session length, and 
-retention in gaming — identifying 
+retention in gaming by identifying 
 patterns that distinguish highly 
 engaged players from those at risk 
 of dropping off.
@@ -187,7 +187,7 @@ found here guide every subsequent decision.
 **3. Document every decision**
 Every preprocessing choice, every 
 algorithm selection, every threshold 
-decision has a reason — documented 
+decision has a reason and documented 
 clearly in the notebooks.
 
 **4. Validate before presenting**
