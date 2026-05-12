@@ -160,12 +160,12 @@ Scikit-learn, Matplotlib, Seaborn
 |---|---|
 | Classification | User Retention & Churn |
 | Clustering | Customer Segmentation (coming) |
-| Time Series | Sales Forecasting (coming) |
+| Time Series | Sales Forecasting  |
 | Feature Engineering | All projects |
 | Class Imbalance (SMOTE) | User Retention & Churn |
 | Hyperparameter Tuning | User Retention & Churn |
 | Business Impact Analysis | User Retention & Churn |
-| Model Deployment (Streamlit) | Coming soon |
+| Model Deployment (Streamlit) | Completed successfully |
 
 ---
 
