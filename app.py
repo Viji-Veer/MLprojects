@@ -64,7 +64,7 @@ with st.sidebar:
     [View Project](https://github.com/Viji-Veer/MLprojects)
     
     **LinkedIn:**  
-    [Connect with Viji](https://www.linkedin.com/in/vijayalakshmi-veeraiyan)
+    [Connect with Vijayalakshmi Veeraiyan](https://www.linkedin.com/in/vijayalakshmi-veeraiyan)
     """)
     
     st.markdown("---")
