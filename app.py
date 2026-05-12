@@ -38,7 +38,7 @@ st.title("📊 User Retention & Churn Predictor")
 st.markdown("""
 **Built by Vijayalakshmi Veeraiyan (Viji)**  
 *Gradient Boosting Model | ROC AUC: 0.8931 | 
-Accuracy: 82.61% | Recall: 82%*
+Accuracy: 83.25% | Recall: 80%*
 """)
 st.markdown("---")
 
