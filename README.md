@@ -165,7 +165,7 @@ Scikit-learn, Matplotlib, Seaborn
 | Class Imbalance (SMOTE) | User Retention & Churn |
 | Hyperparameter Tuning | User Retention & Churn |
 | Business Impact Analysis | User Retention & Churn |
-| Model Deployment (Streamlit) | Completed successfully |
+| Model Deployment (Streamlit) | Completed successfully Try the Live app here https://mlprojects-h63eemdmwpy6jk4ae8zakk.streamlit.app/ |
 
 ---
 
