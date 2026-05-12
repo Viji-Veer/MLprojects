@@ -36,7 +36,7 @@ except Exception as e:
 # ----------------------------------------
 st.title("📊 User Retention & Churn Predictor")
 st.markdown("""
-**Built by Vijayalakshmi Veeraiyan (Viji)**  
+**Built by Vijayalakshmi Veeraiyan **  
 *Gradient Boosting Model | ROC AUC: 0.8931 | 
 Accuracy: 83.25% | Recall: 80%*
 """)
@@ -425,7 +425,7 @@ elif predict_button and not model_loaded:
 st.markdown("---")
 st.markdown("""
 <div style='text-align: center; color: grey;'>
-Built by Vijayalakshmi Veeraiyan (Viji) | 
+Built by Vijayalakshmi Veeraiyan  | 
 Vantaa, Finland | 
 <a href='https://github.com/Viji-Veer/MLprojects'>
 GitHub</a> | 
