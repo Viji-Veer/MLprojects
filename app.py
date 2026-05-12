@@ -53,7 +53,7 @@ with st.sidebar:
     targeted retention strategies.
     
     **Model:** Gradient Boosting  
-    **Threshold:** 0.2735  
+    **Threshold:** 0.3049  
     **Dataset:** 7,043 customers  
     
     **Business Assumptions:**
