@@ -11,6 +11,13 @@ deployment. The goal is identifying at-risk customers
 so targeted retention strategies can be applied
 before customers leave.
 
+
+# 🚀 User Retention and churn Prediction App
+
+**Live Demo:** [Click here to view the App](https://mlprojects-h63eemdmwpy6jk4ae8zakk.streamlit.app/)
+
+## 📖 Project Overview
+This project uses Machine Learning (Gradient Boosting) to predict customer churn...
 ## Tools & Technologies
 - **Python** — core programming language
 - **Pandas & NumPy** — data preprocessing and
@@ -109,15 +116,10 @@ Calculated using assumed telecom industry benchmarks:
 Actual impact depends on company-specific CLV
 and retention costs.*
 
-## Project Screenshots
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://mlprojects-h63eemdmwpy6jk4ae8zakk.streamlit.app/)
 
-### Feature Importance
-![Feature Importance](Images/feature_importance.png)
 
-### ROC Curve
-![ROC Curve](Images/roc_curve.png)
 
-### Confusion Matrix
-![Confusion Matrix](Images/confusion_matrix.png)
+
 
 
