@@ -34,7 +34,7 @@ to people who need to act on them.
 ## Projects
 
 ### 1. User Retention & Churn Analysis
-**Status:** ✅ Complete | **Streamlit App:** ✅ Complete
+**Status:** ✅ Complete | **Streamlit App:** ✅ Live 🚀 **[Try the Live App Here](https://mlprojects-h63eemdmwpy6jk4ae8zakk.streamlit.app/)**
 
 **Business Problem:**
 A telecom company wants to identify customers 
