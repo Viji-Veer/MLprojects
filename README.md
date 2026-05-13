@@ -208,5 +208,5 @@ understand and act on.
 
 ---
 
-*Last updated: 2025*  
+*Last updated: 2026*  
 *All projects built and validated independently*
